@@ -7,8 +7,11 @@ describe("Line", function() {
       const endA = { x: 1, y: 2 };
       const endB = { x: 3, y: 4 };
       const testLine = new Line(endA, endB);
-      actualValue = testLine.toString();
+      const actualValue = testLine.toString();
       assert.strictEqual(actualValue, `Line (1,2) to (3,4)`);
+      const testLine2 = new Line(endA, endB);
+      const expectedValue = testLine2.toString();
+      assert.strictEqual(actualValue, expectedValue);
     });
   });
 });

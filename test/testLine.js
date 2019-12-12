@@ -1,13 +1,14 @@
 const assert = require("assert");
-const { Line } = require("../src/line.js");
+const Line = require("../src/line.js");
 
 describe("Line", function() {
-  describe("isEqual", function() {
-    it.only("It should check wheather two lines are equal", function() {
-      const testLine = new Line(1, 2, 3, 4);
-      actualValue = testLine;
-      expectedValue = Line { x1: 1, y1: 2, x2: 3, y2: 4 };
-      assert.strictEqual(actualValue, expectedValue);
+  describe("tostring", function() {
+    it.only("It should give string form of the given line", function() {
+      const endA = { x: 1, y: 2 };
+      const endB = { x: 3, y: 4 };
+      const testLine = new Line(endA, endB);
+      actualValue = testLine.toString();
+      assert.strictEqual(actualValue, `Line (1,2) to (3,4)`);
     });
   });
 });

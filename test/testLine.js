@@ -56,7 +56,7 @@ describe("Line", function() {
       const line2 = new Line(endA, endB);
       assert.ok(line.isParallelTo(line2));
     });
-    it.only("give false if two lines are parallel but not of same instance", function() {
+    it("give false if two lines are parallel but not of same instance", function() {
       const endA = { x: 5, y: 5 };
       const endB = { x: 25, y: 45 };
       const line = new Line(endA, endB);

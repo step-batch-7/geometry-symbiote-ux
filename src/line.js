@@ -18,10 +18,13 @@ class Line {
     );
   }
   get length() {
-    const x = this.endA.x - this.endB.x;
-    const y = this.endA.y - this.endB.y;
-    const calcLength = Math.sqrt(x * x + y * y);
-    return calcLength;
+    const horizontalDistanceBetween2Points = this.endA.x - this.endB.x;
+    const verticalDistanceBetween2Points = this.endA.y - this.endB.y;
+    const lengthOfLine = Math.hypot(
+      horizontalDistanceBetween2Points,
+      verticalDistanceBetween2Points
+    );
+    return lengthOfLine;
   }
   get slope() {
     return (this.endB.y - this.endA.y) / (this.endB.x - this.endA.x);

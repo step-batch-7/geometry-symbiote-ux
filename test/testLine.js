@@ -42,4 +42,20 @@ describe("Line", function() {
       assert.approximately(line.length, 4, 0.5);
     });
   });
+  describe("isParallel", function() {
+    it("give true if two lines are parallel", function() {
+      const endA = { x: 5, y: 5 };
+      const endB = { x: 25, y: 45 };
+      const line = new Line(endA, endB);
+      const line2 = new Line(endA, endB);
+      assert.ok(line.isParallelTo(line2));
+    });
+    it("give false if two lines are not parallel", function() {
+      const endA = { x: 5, y: 5 };
+      const endB = { x: 25, y: 45 };
+      const line = new Line(endA, endB);
+      const line2 = new Line({ x: 5, y: 5 }, { x: 4, y: 30 });
+      assert.isNotOk(line.isParallelTo(line2));
+    });
+  });
 });

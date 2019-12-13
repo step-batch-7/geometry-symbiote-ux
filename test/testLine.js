@@ -58,4 +58,18 @@ describe("Line", function() {
       assert.isNotOk(line.isParallelTo(line2));
     });
   });
+  describe("slope", function() {
+    it("gives the slope of the given line", function() {
+      const endA = { x: 5, y: 5 };
+      const endB = { x: 25, y: 45 };
+      const line = new Line(endA, endB);
+      assert.strictEqual(line.slope, 2);
+    });
+    it("gives the approx value of slope of the given line", function() {
+      const endA = { x: 5, y: 5 };
+      const endB = { x: 25, y: 45 };
+      const line = new Line(endA, endB);
+      assert.approximately(line.slope, 2, 0.5);
+    });
+  });
 });

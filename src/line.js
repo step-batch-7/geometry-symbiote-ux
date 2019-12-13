@@ -23,11 +23,11 @@ class Line {
     const calcLength = Math.sqrt(x * x + y * y);
     return calcLength;
   }
-  slope() {
+  get slope() {
     return (this.endB.y - this.endA.y) / (this.endB.x - this.endA.x);
   }
   isParallelTo(line2) {
-    return this.slope() == line2.slope();
+    return this.slope == line2.slope;
   }
 }
 

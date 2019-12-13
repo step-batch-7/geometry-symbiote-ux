@@ -41,7 +41,7 @@ describe("Line", function() {
       const line = new Line(endA, endB);
       assert.approximately(line.length, 4, 0.5);
     });
-    it.only("Should give length of the given line, which has the negative endA and endB coordinates", function() {
+    it("Should give length of the given line, which has the negative endA and endB coordinates", function() {
       const endA = { x: -1, y: -2 };
       const endB = { x: 2, y: 2 };
       const line = new Line(endA, endB);
@@ -65,17 +65,41 @@ describe("Line", function() {
     });
   });
   describe("slope", function() {
-    it("gives the slope of the given line", function() {
+    it("gives the slope of the given line for positive numbers coordinates", function() {
       const endA = { x: 5, y: 5 };
       const endB = { x: 25, y: 45 };
       const line = new Line(endA, endB);
       assert.strictEqual(line.slope, 2);
     });
-    it("gives the approx value of slope of the given line", function() {
+    it("gives the slope of the given line for floating numbers coordinates", function() {
       const endA = { x: 5, y: 5 };
       const endB = { x: 25, y: 45 };
       const line = new Line(endA, endB);
       assert.approximately(line.slope, 2, 0.5);
+    });
+    it("gives the slope of the given line for negative numbers coordinates", function() {
+      const endA = { x: -3, y: -2 };
+      const endB = { x: -6, y: -5 };
+      const line = new Line(endA, endB);
+      assert.strictEqual(line.slope, 1);
+    });
+    it("gives the value of slope as NaN ,if the length of given line is zero", function() {
+      const endA = { x: 1, y: 1 };
+      const endB = { x: 1, y: 1 };
+      const line = new Line(endA, endB);
+      assert.isNaN(line.slope);
+    });
+    it("gives the value of slope as zero ,if the line is parallel to x-axis", function() {
+      const endA = { x: 4, y: 2 };
+      const endB = { x: 7, y: 2 };
+      const line = new Line(endA, endB);
+      assert.strictEqual(line.slope, 0);
+    });
+    it("gives the value of slope as Infinity ,if the line is parallel to y-axis", function() {
+      const endA = { x: 4, y: 5 };
+      const endB = { x: 4, y: 6 };
+      const line = new Line(endA, endB);
+      assert.strictEqual(line.slope, Infinity);
     });
   });
 });

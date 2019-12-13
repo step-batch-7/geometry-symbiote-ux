@@ -1,4 +1,4 @@
-const assert = require("assert");
+const assert = require("chai").assert;
 const { Line } = require("../src/line.js");
 
 describe("Line", function() {
@@ -28,7 +28,7 @@ describe("Line", function() {
       const testLine = new Line(endA, endB);
       const otherLine = { endA: { x: 1, y: 2 }, endB: { x: 3, y: 4 } };
       const actualValue = testLine.isEqualTo(otherLine);
-      assert.ok(!actualValue);
+      assert.isNotOk(actualValue);
     });
   });
 });

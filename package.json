@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/step-batch-7/geometry-symbiote-ux/issues"
   },
-  "homepage": "https://github.com/step-batch-7/geometry-symbiote-ux#readme"
+  "homepage": "https://github.com/step-batch-7/geometry-symbiote-ux#readme",
+  "dependencies": {
+    "chai": "^4.2.0"
+  }
 }

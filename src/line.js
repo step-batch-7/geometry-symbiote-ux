@@ -8,8 +8,8 @@ const isTypeSame = function(otherLine) {
 
 class Line {
   constructor(endA, endB) {
-    this.endA = { x: endA.x, y: endA.y };
-    this.endB = { x: endB.x, y: endB.y };
+    this.endA = { ...endA };
+    this.endB = { ...endB };
   }
   toString() {
     return `Line (${this.endA.x},${this.endA.y}) to (${this.endB.x},${this.endB.y})`;

@@ -35,11 +35,17 @@ describe("Line", function() {
       const line = new Line(endA, endB);
       assert.strictEqual(line.length, 4);
     });
-    it("Should give  approximate length of the given line, which has the positive endA and endB coordinates", function() {
+    it("Should give length of the given line, which has the floating endA and endB coordinates", function() {
       const endA = { x: 4, y: 4 };
       const endB = { x: 1, y: 1 };
       const line = new Line(endA, endB);
       assert.approximately(line.length, 4, 0.5);
+    });
+    it.only("Should give length of the given line, which has the negative endA and endB coordinates", function() {
+      const endA = { x: -1, y: -2 };
+      const endB = { x: 2, y: 2 };
+      const line = new Line(endA, endB);
+      assert.strictEqual(line.length, 5);
     });
   });
   describe("isParallel", function() {

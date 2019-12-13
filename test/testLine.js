@@ -15,19 +15,20 @@ describe("Line", function() {
     });
   });
   describe("isEqualTo", function() {
-    it("It should give true if two lines are equal", function() {
+    it("It should give true if fields of both lines are equal", function() {
       const endA = { x: 1, y: 2 };
       const endB = { x: 3, y: 4 };
       const testLine = new Line(endA, endB);
       const otherLine = { endA: { x: 1, y: 2 }, endB: { x: 3, y: 4 } };
       assert.ok(testLine.isEqualTo(otherLine));
     });
-    it("It should give false if two lines are not equal", function() {
+    it("It should give false if fields of both lines are not equal", function() {
       const endA = { x: 1, y: 2 };
       const endB = { x: 3, y: 4 };
       const testLine = new Line(endA, endB);
       const otherLine = { endA: { x: 1, y: 2 }, endB: { x: 0, y: 0 } };
-      assert.ok(!testLine.isEqualTo(otherLine));
+      const actualValue = testLine.isEqualTo(otherLine);
+      assert.ok(!actualValue);
     });
   });
 });

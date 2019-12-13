@@ -30,6 +30,7 @@ class Line {
     return (this.endB.y - this.endA.y) / (this.endB.x - this.endA.x);
   }
   isParallelTo(line2) {
+    if (!(line2 instanceof Line)) return false;
     return this.slope == line2.slope;
   }
 }

@@ -15,11 +15,10 @@ class Line {
     return `Line (${this.endA.x},${this.endA.y}) to (${this.endB.x},${this.endB.y})`;
   }
   isEqualTo(otherLine) {
-    return (
-      isTypeSame(otherLine) &&
-      arePointsEqual(this.endA, otherLine.endA) &&
-      arePointsEqual(this.endB, otherLine.endB)
-    );
+    const isLineObj = isTypeSame(otherLine);
+    const areEndAsEqual = arePointsEqual(this.endA, otherLine.endA);
+    const areEndBsEqual = arePointsEqual(this.endB, otherLine.endB);
+    return isLineObj && areEndAsEqual && areEndBsEqual;
   }
 }
 module.exports = { Line };

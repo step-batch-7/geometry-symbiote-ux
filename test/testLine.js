@@ -110,11 +110,19 @@ describe("Line", function() {
     });
   });
   describe("findX", function() {
-    it.only("gives the x-coordinate of line for given y-coordinate", function() {
+    it("gives the x-coordinate of line for given y-coordinate", function() {
       const endA = { x: 1, y: 1 };
       const endB = { x: 3, y: 3 };
       const line = new Line(endA, endB);
       assert.strictEqual(line.findX(2), 2);
+    });
+  });
+  describe("findY", function() {
+    it("gives the y-coordinate of line for given x-coordinate", function() {
+      const endA = { x: 1, y: 1 };
+      const endB = { x: 3, y: 3 };
+      const line = new Line(endA, endB);
+      assert.strictEqual(line.findY(2), 2);
     });
   });
 });

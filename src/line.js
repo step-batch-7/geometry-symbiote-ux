@@ -52,12 +52,7 @@ class Line {
   }
   hasPoint(point) {
     if (!(point instanceof Point)) return false;
-    return (
-      point.x >= this.endA.x &&
-      point.x <= this.endB.x &&
-      point.y >= this.endA.y &&
-      point.y <= this.endB.y
-    );
+    return this.findX(point.y) === point.x;
   }
 }
 

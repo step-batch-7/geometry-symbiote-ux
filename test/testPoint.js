@@ -37,7 +37,7 @@ describe("Point", function() {
       const other = { x: 2, y: 3 };
       assert.isNotOk(point.isEqualTo(other));
     });
-    it.only("gives false if both points are not same but of same instance", function() {
+    it("gives false if both points are not same but of same instance", function() {
       const point = new Point(2, 3);
       const other = new Point(7, 3);
       assert.isNotOk(point.isEqualTo(other));

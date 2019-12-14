@@ -49,6 +49,14 @@ class Line {
     const line2 = new Line(midPoint, this.endB);
     return [line1, line2];
   }
+  hasPoint(point) {
+    return (
+      point.x >= this.endA.x &&
+      point.x <= this.endB.x &&
+      point.y >= this.endA.y &&
+      point.y <= this.endB.y
+    );
+  }
 }
 
 module.exports = { Line };

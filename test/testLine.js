@@ -1,5 +1,6 @@
 const assert = require("chai").assert;
 const { Line } = require("../src/line.js");
+const { Point } = require("../src/point.js");
 
 describe("Line", function() {
   describe("toString", function() {
@@ -146,6 +147,15 @@ describe("Line", function() {
       const actual = line.split();
       const expected = [new Line(endA, midPoint), new Line(midPoint, endB)];
       assert.deepStrictEqual(actual, expected);
+    });
+  });
+  describe("hasPoint", function() {
+    it.only("gives true if given point is on the line and of same instance", function() {
+      const endA = { x: 1, y: 1 };
+      const endB = { x: 3, y: 3 };
+      const line = new Line(endA, endB);
+      const point = new Point(2, 3);
+      assert.ok(line.hasPoint(point));
     });
   });
 });

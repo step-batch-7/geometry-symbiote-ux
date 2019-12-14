@@ -150,12 +150,26 @@ describe("Line", function() {
     });
   });
   describe("hasPoint", function() {
-    it.only("gives true if given point is on the line and of same instance", function() {
+    it("gives true if given point is on the line and of same instance", function() {
       const endA = { x: 1, y: 1 };
       const endB = { x: 3, y: 3 };
       const line = new Line(endA, endB);
       const point = new Point(2, 3);
       assert.ok(line.hasPoint(point));
+    });
+    it("gives false if given point is  not on the line and but  of same instance", function() {
+      const endA = { x: 1, y: 1 };
+      const endB = { x: 3, y: 3 };
+      const line = new Line(endA, endB);
+      const point = new Point(4, 3);
+      assert.isNotOk(line.hasPoint(point));
+    });
+    it("gives false if given point is on the line and but not of same instance", function() {
+      const endA = { x: 1, y: 1 };
+      const endB = { x: 3, y: 3 };
+      const line = new Line(endA, endB);
+      const point = { x: 2, y: 3 };
+      assert.isNotOk(line.hasPoint(point));
     });
   });
 });

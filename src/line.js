@@ -1,3 +1,4 @@
+const { Point } = require("./point.js");
 const arePointsEqual = function(point1, point2) {
   return point1.x == point2.x && point1.y == point2.y;
 };
@@ -50,6 +51,7 @@ class Line {
     return [line1, line2];
   }
   hasPoint(point) {
+    if (!(point instanceof Point)) return false;
     return (
       point.x >= this.endA.x &&
       point.x <= this.endB.x &&

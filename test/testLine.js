@@ -137,4 +137,15 @@ describe("Line", function() {
       assert.isNaN(line.findY(8));
     });
   });
+  describe("split", function() {
+    it("gives  two lines  after splitting the given line exactly at the centre and of same instance", function() {
+      const endA = { x: 0, y: 4 };
+      const endB = { x: 4, y: 0 };
+      const midPoint = { x: 2, y: 2 };
+      const line = new Line(endA, endB);
+      const actual = line.split();
+      const expected = [new Line(endA, midPoint), new Line(midPoint, endB)];
+      assert.deepStrictEqual(actual, expected);
+    });
+  });
 });

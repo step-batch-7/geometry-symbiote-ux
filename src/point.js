@@ -6,8 +6,8 @@ class Point {
   toString() {
     return `[Point @(${this.x},${this.y})]`;
   }
-  visit(givenFunction) {
-    return givenFunction(this.x, this.y);
+  visit(functionRef) {
+    return functionRef(this.x, this.y);
   }
   isEqualTo(other) {
     if (!(other instanceof Point)) return false;

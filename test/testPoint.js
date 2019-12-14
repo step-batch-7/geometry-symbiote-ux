@@ -26,11 +26,21 @@ describe("Point", function() {
       assert.approximately(actual, 0.6, 0.5);
     });
   });
-  describe("isEqualTo",function(){
-    it("gives true if both points are same and of same instance",function(){
-      const point = new Point(2,3);
-      const other = new Point(2,3);
+  describe("isEqualTo", function() {
+    it("gives true if both points are same and of same instance", function() {
+      const point = new Point(2, 3);
+      const other = new Point(2, 3);
       assert.ok(point.isEqualTo(other));
-    })
-  })
+    });
+    it("gives false if both points are same and not of same instance", function() {
+      const point = new Point(2, 3);
+      const other = { x: 2, y: 3 };
+      assert.isNotOk(point.isEqualTo(other));
+    });
+    it.only("gives false if both points are not same but of same instance", function() {
+      const point = new Point(2, 3);
+      const other = new Point(7, 3);
+      assert.isNotOk(point.isEqualTo(other));
+    });
+  });
 });

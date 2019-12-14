@@ -43,4 +43,11 @@ describe("Point", function() {
       assert.isNotOk(point.isEqualTo(other));
     });
   });
+  describe("clone", function() {
+    it("should give the clone of the given point", function() {
+      const point = new Point(2, 3);
+      const point2 = point.clone();
+      assert.deepStrictEqual(point, point2);
+    });
+  });
 });

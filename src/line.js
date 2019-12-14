@@ -38,6 +38,7 @@ class Line {
     return (y - this.endA.y) / this.slope + this.endA.x;
   }
   findY(x) {
+    if (!(x >= this.endA.x && x <= this.endB.x)) return NaN;
     return (x - this.endA.x) * this.slope + this.endA.y;
   }
 }

@@ -8,7 +8,7 @@ describe("Line", function() {
       const endB = { x: 3, y: 4 };
       const line = new Line(endA, endB);
       const actualValue = line.toString();
-      assert.strictEqual(actualValue, `Line (1,2) to (3,4)`);
+      assert.strictEqual(actualValue, `[Line (1,2) to (3,4)]`);
     });
   });
   describe("isEqualTo", function() {

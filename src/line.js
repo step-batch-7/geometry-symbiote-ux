@@ -33,6 +33,9 @@ class Line {
     if (!(line2 instanceof Line)) return false;
     return this.slope == line2.slope;
   }
+  findX(y) {
+    return (y - this.endA.y) / this.slope + this.endA.x;
+  }
 }
 
 module.exports = { Line };

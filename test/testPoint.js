@@ -26,4 +26,11 @@ describe("Point", function() {
       assert.approximately(actual, 0.6, 0.5);
     });
   });
+  describe("isEqualTo",function(){
+    it("gives true if both points are same and of same instance",function(){
+      const point = new Point(2,3);
+      const other = new Point(2,3);
+      assert.ok(point.isEqualTo(other));
+    })
+  })
 });

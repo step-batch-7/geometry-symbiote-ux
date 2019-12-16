@@ -8,11 +8,11 @@ const areColinear = function(point1,point2,point3){
   return point1.x*(point2.y -point3.y)+point2.x*(point3.y -point2.y)+point3.x*(point1.y - point2.y)===0;
 }
 
-const arePointsInRange = function(midPoint,point1,point2){
+const isPointInRange = function(midPoint,point1,point2){
   if(point1>point2){
-    return point2 <=midPoint &&midPoint<=point;
+    return point2 <=midPoint && midPoint<=point1;
   }
-  return point2>=midPoint &&midPoint>=point1;
+  return point2>=midPoint && midPoint>=point1;
 }
 
 class Line {
@@ -47,11 +47,11 @@ class Line {
     return ((this.slope == line2.slope) && (!areColinear(this.endA,this.endB,line2.endA)));
   }
   findX(pointY) {
-    if (!arePointsInRange(pointY,this.endA.y,this.endB.y)) return NaN;
+    if (!isPointInRange(pointY,this.endA.y,this.endB.y)) return NaN;
     return (pointY - this.endA.y) / this.slope + this.endA.x;
   }
   findY(pointX) {
-    if (!arePointsInRange(pointX,this.endA.y,this.endB.y)) return NaN;
+    if (!isPointInRange(pointX,this.endA.y,this.endB.y)) return NaN;
     return (pointX - this.endA.x) * this.slope + this.endA.y;
   }
   split() {

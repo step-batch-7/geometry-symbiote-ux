@@ -117,6 +117,12 @@ describe("Line", function() {
       const line = new Line(endA, endB);
       assert.strictEqual(line.findX(2), 2);
     });
+    it("gives the x-coordinate of line for given y-coordinate ,when endB is greater than endA ", function() {
+      const endA = { x: 3, y: 3 };
+      const endB = { x: 1, y: 1 };
+      const line = new Line(endA, endB);
+      assert.strictEqual(line.findX(2), 2);
+    });
     it("gives the x-coordinate of line as NaN if the given y-coordinate is outside the line segment", function() {
       const endA = { x: 1, y: 1 };
       const endB = { x: 3, y: 3 };

@@ -22,6 +22,9 @@ class Point {
     const yDistance = other.y - this.y;
     return Math.hypot(xDistance,yDistance);
   }
+  isOn(line){
+    return line.hasPoint(this);
+  }
 }
 
 module.exports = { Point };

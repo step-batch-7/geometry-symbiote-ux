@@ -20,8 +20,7 @@ class Point {
     if(!(other instanceof Point)) return NaN;
     const xDistance = other.x - this.x;
     const yDistance = other.y - this.y;
-    const distance = Math.hypot(xDistance,yDistance);
-    return distance; 
+    return Math.hypot(xDistance,yDistance);
   }
 }
 

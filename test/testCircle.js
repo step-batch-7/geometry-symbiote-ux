@@ -10,11 +10,23 @@ describe("Circle", function() {
     });
   });
   describe("isEqual", function() {
-    it.only("gives true if the both circles are at same location and are of same size and instance", function() {
+    it("gives true if the both circles are at same location and are of same size and instance", function() {
       const center = { x: 2, y: 2 };
       const circle1 = new Circle(center, 5);
       const circle2 = new Circle(center, 5);
       assert.ok(circle1.isEqual(circle2));
+    });
+    it("gives false if the both circles are at same location but  are not of same size and instance", function() {
+      const center = { x: 2, y: 2 };
+      const circle1 = new Circle(center, 4);
+      const circle2 = new Circle(center, 5);
+      assert.isNotOk(circle1.isEqual(circle2));
+    });
+    it("gives false if the both circles are at same location and are of same size but not of same instance", function() {
+      const center = { x: 2, y: 2 };
+      const circle1 = new Circle(center, 5);
+      const circle2 = { center: { x: 2, y: 2 }, radius: 5 };
+      assert.isNotOk(circle1.isEqual(circle2));
     });
   });
 });

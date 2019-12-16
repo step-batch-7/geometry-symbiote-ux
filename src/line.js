@@ -1,4 +1,4 @@
-const { Point } = require("./point.js");
+const { Point } = require("./point");
 
 const areColinear = function(point1, point2, point3) {
   const [x1, y1] = [point1.x, point1.y];

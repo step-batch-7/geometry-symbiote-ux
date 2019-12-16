@@ -48,9 +48,7 @@ class Line {
     return (pointX - this.endA.x) * this.slope + this.endA.y;
   }
   split() {
-    const xMid = (this.endA.x + this.endB.x) / 2;
-    const yMid = (this.endA.y + this.endB.y) / 2;
-    const midPoint = { x: xMid, y: yMid };
+    const midPoint = this.findPointFromStart(this.length / 2);
     const line1 = new Line(this.endA, midPoint);
     const line2 = new Line(midPoint, this.endB);
     return [line1, line2];

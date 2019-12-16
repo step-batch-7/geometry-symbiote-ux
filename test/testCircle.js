@@ -29,4 +29,11 @@ describe("Circle", function() {
       assert.isNotOk(circle1.isEqual(circle2));
     });
   });
+  describe("area", function() {
+    it.only("gives the area of circle", function() {
+      const center = { x: 2, y: 2 };
+      const circle = new Circle(center, 7);
+      assert.approximately(circle.area, 154, 0.5);
+    });
+  });
 });

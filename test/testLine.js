@@ -178,62 +178,62 @@ describe("Line", function() {
       assert.isNotOk(line.hasPoint(point));
     });
   });
-  describe("findPointFromStart",function(){
-    it("finds a point at a distance of given value from the start of the given line",function(){
+  describe("findPointFromStart", function() {
+    it("finds a point at a distance of given value from the start of the given line", function() {
       const endA = { x: 0, y: 0 };
       const endB = { x: 6, y: 8 };
       const line = new Line(endA, endB);
-      const expected = new Point(3,4);
+      const expected = new Point(3, 4);
       assert.deepStrictEqual(line.findPointFromStart(5), expected);
-    })
-    it("gives the starting point of the line , if the distance is zero ",function(){
+    });
+    it("gives the starting point of the line , if the distance is zero ", function() {
       const endA = { x: 0, y: 0 };
       const endB = { x: 6, y: 8 };
       const line = new Line(endA, endB);
-      const expected = new Point(0,0);
+      const expected = new Point(0, 0);
       assert.deepStrictEqual(line.findPointFromStart(0), expected);
-    })
-    it("gives the last point of the line , if the distance is equal to the length of line",function(){
+    });
+    it("gives the last point of the line , if the distance is equal to the length of line", function() {
       const endA = { x: 0, y: 0 };
       const endB = { x: 9, y: 12 };
       const line = new Line(endA, endB);
-      const expected = new Point(9,12);
+      const expected = new Point(9, 12);
       assert.deepStrictEqual(line.findPointFromStart(15), expected);
-    })
-    it("gives the null , if given distance of the point is more then the length of the line",function(){
+    });
+    it("gives the null , if given distance of the point is more then the length of the line", function() {
       const endA = { x: 0, y: 0 };
       const endB = { x: 9, y: 12 };
       const line = new Line(endA, endB);
       assert.isNull(line.findPointFromStart(20));
-    })
-  })
-  describe("findPointFromEnd",function(){
-    it("finds a point at a distance of given value from the end of the given line",function(){
+    });
+  });
+  describe("findPointFromEnd", function() {
+    it("finds a point at a distance of given value from the end of the given line", function() {
       const endA = { x: 0, y: 0 };
       const endB = { x: 6, y: 8 };
       const line = new Line(endA, endB);
-      const expected = new Point(3,4);
+      const expected = new Point(3, 4);
       assert.deepStrictEqual(line.findPointFromEnd(5), expected);
-    })
-    it("gives the last point of the line , if the distance is zero ",function(){
+    });
+    it("gives the last point of the line , if the distance is zero ", function() {
       const endA = { x: 0, y: 0 };
       const endB = { x: 6, y: 8 };
       const line = new Line(endA, endB);
-      const expected = new Point(6,8);
+      const expected = new Point(6, 8);
       assert.deepStrictEqual(line.findPointFromEnd(0), expected);
-    })
-    it("gives the starting point of the line , if the distance is equal to the length of line",function(){
+    });
+    it("gives the starting point of the line , if the distance is equal to the length of line", function() {
       const endA = { x: 0, y: 0 };
       const endB = { x: 9, y: 12 };
       const line = new Line(endA, endB);
-      const expected = new Point(0,0);
+      const expected = new Point(0, 0);
       assert.deepStrictEqual(line.findPointFromEnd(15), expected);
-    })
-    it("gives the null , if given distance of the point is more then the length of the line",function(){
+    });
+    it("gives the null , if given distance of the point is more then the length of the line", function() {
       const endA = { x: 0, y: 0 };
       const endB = { x: 9, y: 12 };
       const line = new Line(endA, endB);
       assert.isNull(line.findPointFromEnd(20));
-    })
-  })
+    });
+  });
 });

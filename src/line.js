@@ -70,15 +70,13 @@ class Line {
     return this.findX(point.y) === point.x || point.y === this.findY(point.x);
   }
   findPointFromStart(distance){
-    const m = distance;
-    const n = this.length - m;
+    if(distance > this.length) return null;
+    const distanceRatio = distance/this.length;
     const [x1,y1] = [this.endA.x,this.endA.y];
     const [x2,y2] = [this.endB.x,this.endB.y];
-    const pointX = ((m * x2) + (n * x1)) / (m + n);
-    const pointY = ((m * y2) + (n * y1)) / (m + n);
+    const pointX = ((1 - distanceRatio) * x1 + distanceRatio * x2);
+    const pointY = ((1 - distanceRatio) * y1 + distanceRatio * y2);
     return new Point(pointX,pointY);
-
-
   }
 }
 

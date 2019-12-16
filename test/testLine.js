@@ -186,5 +186,26 @@ describe("Line", function() {
       const expected = new Point(3,4);
       assert.deepStrictEqual(line.findPointFromStart(5), expected);
     })
+    it("gives the starting point of the line , if the distance is zero ",function(){
+      const endA = { x: 0, y: 0 };
+      const endB = { x: 6, y: 8 };
+      const line = new Line(endA, endB);
+      const expected = new Point(0,0);
+      assert.deepStrictEqual(line.findPointFromStart(0), expected);
+    })
+    it("gives the last point of the line , if the distance is equal to the length of line",function(){
+      const endA = { x: 0, y: 0 };
+      const endB = { x: 9, y: 12 };
+      const line = new Line(endA, endB);
+      const expected = new Point(9,12);
+      assert.deepStrictEqual(line.findPointFromStart(15), expected);
+    })
+    it("gives the null , if given distance of the point is more then the length of the line",function(){
+      const endA = { x: 0, y: 0 };
+      const endB = { x: 9, y: 12 };
+      const line = new Line(endA, endB);
+      const expected = new Point(9,12);
+      assert.isNull(line.findPointFromStart(20));
+    })
   })
 });

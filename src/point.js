@@ -1,7 +1,6 @@
 class Point {
   constructor(x, y) {
-    this.x = x;
-    this.y = y;
+    [this.x, this.y] = [x, y];
   }
   toString() {
     return `[Point @(${this.x},${this.y})]`;
@@ -16,13 +15,13 @@ class Point {
   clone() {
     return new Point(this.x, this.y);
   }
-  findDistanceTo(other){
-    if(!(other instanceof Point)) return NaN;
+  findDistanceTo(other) {
+    if (!(other instanceof Point)) return NaN;
     const xDistance = other.x - this.x;
     const yDistance = other.y - this.y;
-    return Math.hypot(xDistance,yDistance);
+    return Math.hypot(xDistance, yDistance);
   }
-  isOn(line){
+  isOn(line) {
     return line.hasPoint(this);
   }
 }

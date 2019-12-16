@@ -23,11 +23,11 @@ class Line {
     );
   }
   get length() {
-    const horizontalDistanceBetween2Points = this.endA.x - this.endB.x;
-    const verticalDistanceBetween2Points = this.endA.y - this.endB.y;
+    const xDistance = this.endA.x - this.endB.x;
+    const yDistance = this.endA.y - this.endB.y;
     const lengthOfLine = Math.hypot(
-      horizontalDistanceBetween2Points,
-      verticalDistanceBetween2Points
+      xDistance,
+      yDistance
     );
     return lengthOfLine;
   }

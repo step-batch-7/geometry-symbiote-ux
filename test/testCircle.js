@@ -30,10 +30,15 @@ describe("Circle", function() {
     });
   });
   describe("area", function() {
-    it.only("gives the area of circle", function() {
+    it("gives the area of circle", function() {
       const center = { x: 2, y: 2 };
       const circle = new Circle(center, 7);
       assert.approximately(circle.area, 154, 0.5);
+    });
+    it("gives the area of circle as zero when radius is zero", function() {
+      const center = { x: 2, y: 2 };
+      const circle = new Circle(center, 0);
+      assert.strictEqual(circle.area, 0);
     });
   });
 });

@@ -16,6 +16,12 @@ class Point {
   clone() {
     return new Point(this.x, this.y);
   }
+  findDistanceTo(other){
+    const xDistance = other.x - this.x;
+    const yDistance = other.y - this.y;
+    const distance = Math.hypot(xDistance,yDistance);
+    return distance; 
+  }
 }
 
 module.exports = { Point };

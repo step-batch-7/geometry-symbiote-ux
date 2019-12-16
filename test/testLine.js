@@ -178,4 +178,13 @@ describe("Line", function() {
       assert.isNotOk(line.hasPoint(point));
     });
   });
+  describe("findPointFromStart",function(){
+    it("finds a point at a distance of given value from the start of the given line",function(){
+      const endA = { x: 0, y: 0 };
+      const endB = { x: 6, y: 8 };
+      const line = new Line(endA, endB);
+      const expected = new Point(3,4);
+      assert.deepStrictEqual(line.findPointFromStart(5), expected);
+    })
+  })
 });

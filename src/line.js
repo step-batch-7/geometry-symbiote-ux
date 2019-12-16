@@ -5,7 +5,10 @@ const arePointsEqual = function(point1, point2) {
 };
 
 const areColinear = function(point1,point2,point3){
-  return point1.x*(point2.y -point3.y)+point2.x*(point3.y -point2.y)+point3.x*(point1.y - point2.y)===0;
+  const [x1,y1] = [point1.x,point1.y];
+  const [x2,y2] = [point2.x,point2.y];
+  const [x3,y3] = [point3.x,point3.y];
+  return x1*(y2 - y3) + x2*(y3 - y2) + x3*(y1 - y2)===0;
 }
 
 const isPointInRange = function(midPoint,point1,point2){
@@ -65,6 +68,17 @@ class Line {
   hasPoint(point) {
     if (!(point instanceof Point)) return false;
     return this.findX(point.y) === point.x || point.y === this.findY(point.x);
+  }
+  findPointFromStart(distance){
+    const m = distance;
+    const n = this.length - m;
+    const [x1,y1] = [this.endA.x,this.endA.y];
+    const [x2,y2] = [this.endB.x,this.endB.y];
+    const pointX = ((m * x2) + (n * x1)) / (m + n);
+    const pointY = ((m * y2) + (n * y1)) / (m + n);
+    return new Point(pointX,pointY);
+
+
   }
 }
 

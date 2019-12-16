@@ -3,6 +3,10 @@ const arePointsEqual = function(point1, point2) {
   return point1.x == point2.x && point1.y == point2.y;
 };
 
+const areColinear = function(point1,point2,point3){
+  return point1.x*(point2.y -point3.y)+point2.x*(point3.y -point2.y)+point3.x*(point1.y - point2.y)===0;
+}
+
 class Line {
   constructor(endA, endB) {
     this.endA = { x: endA.x, y: endA.y };
@@ -32,7 +36,7 @@ class Line {
   }
   isParallelTo(line2) {
     if (!(line2 instanceof Line)) return false;
-    return this.slope == line2.slope;
+    return ((this.slope == line2.slope) && (!areColinear(this.endA,this.endB,line2.endA)));
   }
   findX(y) {
     if (!(y >= this.endA.y && y <= this.endB.y)) return NaN;

@@ -27,9 +27,7 @@ class Line {
     return this.endA.isEqualTo(other.endA) && this.endB.isEqualTo(other.endB);
   }
   get length() {
-    const xDistance = this.endA.x - this.endB.x;
-    const yDistance = this.endA.y - this.endB.y;
-    return Math.hypot(xDistance, yDistance);
+    return this.endA.findDistanceTo(this.endB);
   }
   get slope() {
     return (this.endB.y - this.endA.y) / (this.endB.x - this.endA.x);

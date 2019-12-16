@@ -17,6 +17,7 @@ class Point {
     return new Point(this.x, this.y);
   }
   findDistanceTo(other){
+    if(!(other instanceof Point)) return NaN;
     const xDistance = other.x - this.x;
     const yDistance = other.y - this.y;
     const distance = Math.hypot(xDistance,yDistance);

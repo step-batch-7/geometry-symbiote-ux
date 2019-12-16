@@ -50,11 +50,16 @@ describe("Point", function() {
       assert.deepStrictEqual(point, point2);
     });
   });
-  describe("findDistance",function(){
-    it.only("gives distance between given two points : point1 & point2 which are of same instance",function(){
+  describe("findDistanceTo",function(){
+    it("gives distance between given two points : point1 & point2 which are of same instance",function(){
       const point1 = new Point(2,5);
-      const point2 = new Point(5,5);
-      assert.strictEqual(point1.findDistanceTo(point2),3);
+      const other = new Point(5,5);
+      assert.strictEqual(point1.findDistanceTo(other),3);
+    })
+    it("gives distance as NaN, between given two points : point1 & point2 which are not of same instance",function(){
+      const point1 = new Point(2,5);
+      const other = { x: 5, y: 5 };
+      assert.isNaN(point1.findDistanceTo(other));
     })
   })
 });

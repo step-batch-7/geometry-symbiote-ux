@@ -31,4 +31,13 @@ describe("Rectangle", function() {
       assert.strictEqual(rectangle.area, 0);
     });
   });
+
+  describe("perimeter", function() {
+    it("gives the perimeter of the rectangle", function() {
+      const endA = { x: 1, y: 5 };
+      const endB = { x: 6, y: 1 };
+      const rectangle = new Rectangle(endA, endB);
+      assert.strictEqual(rectangle.perimeter, 18);
+    });
+  });
 });

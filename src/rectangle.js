@@ -16,6 +16,13 @@ class Rectangle {
     const width = endD.findDistanceTo(this.endB);
     return length * width;
   }
+
+  get perimeter(){
+    const endD = new Point(this.endA.x, this.endB.y);
+    const length = endD.findDistanceTo(this.endA);
+    const width = endD.findDistanceTo(this.endB);
+    return 2 *(length + width);
+  }
 }
 
 module.exports = { Rectangle };

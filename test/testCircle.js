@@ -89,4 +89,13 @@ describe("Circle", function() {
       assert.deepStrictEqual(actual, expected);
     });
   });
+
+  describe("covers", function() {
+    it("gives true if the given point is inside the circumference of the circle and of same instance", function() {
+      const center = { x: 0, y: 0 };
+      const point = new Point(0, 5);
+      const circle = new Circle(center, 7);
+      assert.ok(circle.covers(point));
+    });
+  });
 });

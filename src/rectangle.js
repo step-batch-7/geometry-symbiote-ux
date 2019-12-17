@@ -4,15 +4,14 @@ class Rectangle {
   constructor(endA, endB) {
     this.endA = new Point(endA.x, endA.y);
     this.endB = new Point(endB.x, endB.y);
-    this.endD = new Point(this.endA.x, this.endB.y);
   }
 
   get height() {
-    return this.endD.findDistanceTo(this.endA);
+    return this.endA.y - this.endB.y;
   }
 
   get width() {
-    return this.endD.findDistanceTo(this.endB);
+    return this.endB.x - this.endA.x;
   }
 
   toString() {

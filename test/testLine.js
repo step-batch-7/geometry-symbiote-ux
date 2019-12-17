@@ -12,6 +12,7 @@ describe("Line", function() {
       assert.strictEqual(actualValue, `[Line (1,2) to (3,4)]`);
     });
   });
+
   describe("isEqualTo", function() {
     it("Should give true if fields of both lines are equal and instance of the line", function() {
       const endA = { x: 1, y: 2 };
@@ -29,6 +30,7 @@ describe("Line", function() {
       assert.isNotOk(actualValue);
     });
   });
+
   describe("length", function() {
     it("Should give length of the given line, which has the positive endA and endB coordinates", function() {
       const endA = { x: 5, y: 4 };
@@ -49,6 +51,7 @@ describe("Line", function() {
       assert.strictEqual(line.length, 5);
     });
   });
+
   describe("isParallel", function() {
     it("give false if two lines are collinear", function() {
       const endA = { x: 5, y: 5 };
@@ -72,6 +75,7 @@ describe("Line", function() {
       assert.isNotOk(line.isParallelTo(line2));
     });
   });
+
   describe("slope", function() {
     it("gives the slope of the given line for positive numbers coordinates", function() {
       const endA = { x: 5, y: 5 };
@@ -110,6 +114,7 @@ describe("Line", function() {
       assert.strictEqual(line.slope, Infinity);
     });
   });
+
   describe("findX", function() {
     it("gives the x-coordinate of line for given y-coordinate", function() {
       const endA = { x: 1, y: 1 };
@@ -130,6 +135,7 @@ describe("Line", function() {
       assert.isNaN(line.findX(7));
     });
   });
+
   describe("findY", function() {
     it("gives the y-coordinate of line for given x-coordinate", function() {
       const endA = { x: 1, y: 1 };
@@ -144,6 +150,7 @@ describe("Line", function() {
       assert.isNaN(line.findY(8));
     });
   });
+
   describe("split", function() {
     it("gives  two lines  after splitting the given line exactly at the centre and of same instance", function() {
       const endA = { x: 0, y: 4 };
@@ -155,6 +162,7 @@ describe("Line", function() {
       assert.deepStrictEqual(actual, expected);
     });
   });
+
   describe("hasPoint", function() {
     it("gives true if given point is on the line and of same instance", function() {
       const endA = { x: 1, y: 1 };
@@ -178,6 +186,7 @@ describe("Line", function() {
       assert.isNotOk(line.hasPoint(point));
     });
   });
+
   describe("findPointFromStart", function() {
     it("finds a point at a distance of given value from the start of the given line", function() {
       const endA = { x: 0, y: 0 };
@@ -207,6 +216,7 @@ describe("Line", function() {
       assert.isNull(line.findPointFromStart(20));
     });
   });
+
   describe("findPointFromEnd", function() {
     it("finds a point at a distance of given value from the end of the given line", function() {
       const endA = { x: 0, y: 0 };

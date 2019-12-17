@@ -76,7 +76,7 @@ class Line {
       (1 - distanceRatio) * this.endA.y + distanceRatio * this.endB.y;
     return new Point(pointX, pointY);
   }
-  
+
   findPointFromEnd(distance) {
     return this.findPointFromStart(this.length - distance);
   }

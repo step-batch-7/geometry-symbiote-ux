@@ -10,6 +10,7 @@ describe("Circle", function() {
       assert.strictEqual(circle.toString(), `[Circle @(1,2) radius 5]`);
     });
   });
+
   describe("isEqual", function() {
     it("gives true if the both circles are at same location and are of same size and instance", function() {
       const center = { x: 2, y: 2 };
@@ -30,6 +31,7 @@ describe("Circle", function() {
       assert.isNotOk(circle1.isEqual(circle2));
     });
   });
+
   describe("area", function() {
     it("gives the area of circle", function() {
       const center = { x: 2, y: 2 };
@@ -42,6 +44,7 @@ describe("Circle", function() {
       assert.strictEqual(circle.area, 0);
     });
   });
+
   describe("perimeter", function() {
     it("gives the perimeter of the circle", function() {
       const center = { x: 2, y: 2 };
@@ -54,6 +57,7 @@ describe("Circle", function() {
       assert.strictEqual(circle.perimeter, 0);
     });
   });
+
   describe("hasPoint", function() {
     it("gives true if point is present on the circle and of same instance", function() {
       const center = { x: 0, y: 0 };

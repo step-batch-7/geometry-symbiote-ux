@@ -1,5 +1,6 @@
 const assert = require("chai").assert;
 const { Circle } = require("../src/circle");
+const { Point } = require("../src/point");
 
 describe("Circle", function() {
   describe("toString", function() {
@@ -51,6 +52,26 @@ describe("Circle", function() {
       const center = { x: 2, y: 2 };
       const circle = new Circle(center, 0);
       assert.strictEqual(circle.perimeter, 0);
+    });
+  });
+  describe("hasPoint", function() {
+    it("gives true if point is present on the circle and of same instance", function() {
+      const center = { x: 0, y: 0 };
+      let point = new Point(0, 7);
+      const circle = new Circle(center, 7);
+      assert.ok(circle.hasPoint(point));
+    });
+    it("gives false if point is not present on the circle and of same instance", function() {
+      const center = { x: 0, y: 0 };
+      let point = new Point(0, 8);
+      const circle = new Circle(center, 7);
+      assert.isNotOk(circle.hasPoint(point));
+    });
+    it("gives false if point is  present on the circle but not of same instance", function() {
+      const center = { x: 0, y: 0 };
+      let point = { x: 0, y: 7 };
+      const circle = new Circle(center, 7);
+      assert.isNotOk(circle.hasPoint(point));
     });
   });
 });

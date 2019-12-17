@@ -50,12 +50,12 @@ describe("Line", function() {
     });
   });
   describe("isParallel", function() {
-    it("give true if two lines are parallel", function() {
+    it("give false if two lines are collinear", function() {
       const endA = { x: 5, y: 5 };
       const endB = { x: 25, y: 45 };
       const line = new Line(endA, endB);
       const line2 = new Line(endA, endB);
-      assert.ok(line.isParallelTo(line2));
+      assert.isNotOk(line.isParallelTo(line2));
     });
     it("give false if two lines are parallel but not of same instance", function() {
       const endA = { x: 5, y: 5 };

@@ -1,5 +1,6 @@
 const assert = require("chai").assert;
 const { Rectangle } = require("../src/rectangle");
+const { Point } = require("../src/point");
 
 describe("Rectangle", function() {
   describe("toString", function() {
@@ -50,6 +51,30 @@ describe("Rectangle", function() {
       const rectangle1 = new Rectangle(endA, endC);
       const rectangle2 = new Rectangle({ x: 2, y: 5 }, endC);
       assert.isNotOk(rectangle1.isEqualTo(rectangle2));
+    });
+  });
+
+  describe("hasPoint", function() {
+    it("gives true if point is present on the rectangle and of same instance", function() {
+      const endA = { x: 0, y: 0 };
+      const endC = { x: 5, y: 5 };
+      const rectangle = new Rectangle(endA, endC);
+      const point = new Point(0, 5);
+      assert.ok(rectangle.hasPoint(point));
+    });
+    it("gives false if point is not present on the rectangle but of same instance", function() {
+      const endA = { x: 0, y: 0 };
+      const endC = { x: 5, y: 5 };
+      const rectangle = new Rectangle(endA, endC);
+      const point = new Point(1, 5);
+      assert.isNotOk(rectangle.hasPoint(point));
+    });
+    it("gives false if point is present on the rectangle but not of same instance", function() {
+      const endA = { x: 0, y: 0 };
+      const endC = { x: 5, y: 5 };
+      const rectangle = new Rectangle(endA, endC);
+      const point = { x: 0, y: 5 };
+      assert.isNotOk(rectangle.hasPoint(point));
     });
   });
 });

@@ -30,12 +30,26 @@ describe("Rectangle", function() {
   });
 
   describe("isEqualTo", function() {
-    it("gives true if both rectangles are on same coordinate", function() {
+    it("gives true if both rectangles are on same coordinate  and of same instance", function() {
       const endA = { x: 1, y: 5 };
       const endC = { x: 6, y: 1 };
       const rectangle1 = new Rectangle(endA, endC);
       const rectangle2 = new Rectangle(endA, endC);
       assert.ok(rectangle1.isEqualTo(rectangle2));
+    });
+    it("gives false if both rectangles are on same coordinate but not of same instance", function() {
+      const endA = { x: 1, y: 5 };
+      const endC = { x: 6, y: 1 };
+      const rectangle1 = new Rectangle(endA, endC);
+      const rectangle2 = { endA: { x: 1, y: 5 }, endC: { x: 6, y: 1 } };
+      assert.isNotOk(rectangle1.isEqualTo(rectangle2));
+    });
+    it("gives false if both rectangles are not on same coordinate and of same instance", function() {
+      const endA = { x: 1, y: 5 };
+      const endC = { x: 6, y: 1 };
+      const rectangle1 = new Rectangle(endA, endC);
+      const rectangle2 = new Rectangle({ x: 2, y: 5 }, endC);
+      assert.isNotOk(rectangle1.isEqualTo(rectangle2));
     });
   });
 });

@@ -27,6 +27,7 @@ class Rectangle {
   }
 
   isEqualTo(other) {
+    if (!(other instanceof Rectangle)) return false;
     return this.endA.isEqualTo(other.endA) && this.endC.isEqualTo(other.endC);
   }
 }

@@ -1,21 +1,21 @@
 const { Point } = require("./point");
 
 class Rectangle {
-  constructor(endA, endB) {
+  constructor(endA, endC) {
     this.endA = new Point(endA.x, endA.y);
-    this.endB = new Point(endB.x, endB.y);
+    this.endC = new Point(endC.x, endC.y);
   }
 
   get height() {
-    return this.endA.y - this.endB.y;
+    return Math.abs(this.endA.y - this.endC.y);
   }
 
   get width() {
-    return this.endB.x - this.endA.x;
+    return Math.abs(this.endC.x - this.endA.x);
   }
 
   toString() {
-    return `[Rectangle (${this.endA.x},${this.endA.y}) to (${this.endB.x},${this.endB.y})]`;
+    return `[Rectangle (${this.endA.x},${this.endA.y}) to (${this.endC.x},${this.endC.y})]`;
   }
 
   get area() {
@@ -24,6 +24,10 @@ class Rectangle {
 
   get perimeter() {
     return 2 * (this.height + this.width);
+  }
+
+  isEqualTo(other) {
+    return this.endA.isEqualTo(other.endA) && this.endC.isEqualTo(other.endC);
   }
 }
 

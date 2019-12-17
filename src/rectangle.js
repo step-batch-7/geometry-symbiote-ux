@@ -1,6 +1,12 @@
 const { Point } = require("./point");
 const { Line } = require("./line");
 
+const isInRange = function(midPoint, point1, point2) {
+  if (point1 > point2) {
+    return point2 <= midPoint && midPoint <= point1;
+  }
+  return point2 >= midPoint && midPoint >= point1;
+};
 const sides = function(start, end) {
   const side1 = new Line({ x: start.x, y: start.y }, { x: end.x, y: start.y });
   const side2 = new Line({ x: end.x, y: start.y }, { x: end.x, y: end.y });
@@ -41,8 +47,16 @@ class Rectangle {
   }
 
   hasPoint(point) {
-    if(!(point instanceof Point)) return false;
+    if (!(point instanceof Point)) return false;
     return sides(this.endA, this.endC).some(side => point.isOn(side) == true);
+  }
+
+  covers(point) {
+    if (!(point instanceof Point)) return false;
+    return (
+      isInRange(point.x, this.endA.x, this.endC.x) &&
+      isInRange(point.y, this.endA.y, this.endC.y)
+    );
   }
 }
 

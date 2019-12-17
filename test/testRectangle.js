@@ -77,4 +77,35 @@ describe("Rectangle", function() {
       assert.isNotOk(rectangle.hasPoint(point));
     });
   });
+
+  describe("covers", function() {
+    it("gives true if given point is inside the rectangle and of same instance", function() {
+      const endA = { x: 0, y: 0 };
+      const endC = { x: 5, y: 5 };
+      const rectangle = new Rectangle(endA, endC);
+      const point = new Point(0, 5);
+      assert.ok(rectangle.covers(point));
+    });
+    it("gives false if given point is not inside the rectangle but of same instance", function() {
+      const endA = { x: 0, y: 0 };
+      const endC = { x: 5, y: 5 };
+      const rectangle = new Rectangle(endA, endC);
+      const point = new Point(0, 6);
+      assert.isNotOk(rectangle.covers(point));
+    });
+    it("gives false if given point is inside the rectangle but not of same instance", function() {
+      const endA = { x: 0, y: 0 };
+      const endC = { x: 5, y: 5 };
+      const rectangle = new Rectangle(endA, endC);
+      const point = { x: 0, y: 5 };
+      assert.isNotOk(rectangle.covers(point));
+    });
+    it("gives true if given point is inside the rectangle and of same instance", function() {
+      const endA = { x: 5, y: 5 };
+      const endC = { x: 0, y: 0 };
+      const rectangle = new Rectangle(endA, endC);
+      const point = new Point(0, 5);
+      assert.ok(rectangle.covers(point));
+    });
+  });
 });

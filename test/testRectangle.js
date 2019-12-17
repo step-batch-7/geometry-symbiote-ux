@@ -18,5 +18,17 @@ describe("Rectangle", function() {
       const rectangle = new Rectangle(endA, endB);
       assert.strictEqual(rectangle.area, 20);
     });
+    it("gives the area of the rectangle as zero if the length of the side  is zero", function() {
+      const endA = { x: 1, y: 5 };
+      const endB = { x: 1, y: 1 };
+      const rectangle = new Rectangle(endA, endB);
+      assert.strictEqual(rectangle.area, 0);
+    });
+    it("gives the area of the rectangle as zero if the width of the side  is zero", function() {
+      const endA = { x: 1, y: 1 };
+      const endB = { x: 5, y: 1 };
+      const rectangle = new Rectangle(endA, endB);
+      assert.strictEqual(rectangle.area, 0);
+    });
   });
 });

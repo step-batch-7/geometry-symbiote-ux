@@ -10,4 +10,13 @@ describe("Rectangle", function() {
       assert.strictEqual(rectangle.toString(), `[Rectangle (1,2) to (5,4)]`);
     });
   });
+
+  describe("area", function() {
+    it("gives the area of the rectangle", function() {
+      const endA = { x: 1, y: 5 };
+      const endB = { x: 6, y: 1 };
+      const rectangle = new Rectangle(endA, endB);
+      assert.strictEqual(rectangle.area, 20);
+    });
+  });
 });

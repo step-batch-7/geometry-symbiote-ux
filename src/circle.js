@@ -22,11 +22,15 @@ class Circle {
   get perimeter() {
     return 2 * Math.PI * this.radius;
   }
-  
+
   hasPoint(point) {
     if (!(point instanceof Point)) return false;
     const length = this.center.findDistanceTo(point);
     return length === this.radius;
+  }
+
+  moveTo(newCenter) {
+    return new Circle(newCenter, this.radius);
   }
 }
 

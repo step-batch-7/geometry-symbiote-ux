@@ -25,8 +25,7 @@ class Circle {
 
   hasPoint(point) {
     if (!(point instanceof Point)) return false;
-    const length = this.center.findDistanceTo(point);
-    return length === this.radius;
+    return this.radius === this.center.findDistanceTo(point);
   }
 
   moveTo(newCenter) {
@@ -35,8 +34,7 @@ class Circle {
 
   covers(point) {
     if (!(point instanceof Point)) return false;
-    const length = this.center.findDistanceTo(point);
-    return length <= this.radius;
+    return this.radius <= this.center.findDistanceTo(point);
   }
 }
 

@@ -97,5 +97,17 @@ describe("Circle", function() {
       const circle = new Circle(center, 7);
       assert.ok(circle.covers(point));
     });
+    it("gives false if the given point is inside the circumference of the circle but not of same instance", function() {
+      const center = { x: 0, y: 0 };
+      const point = { x: 0, y: 5 };
+      const circle = new Circle(center, 7);
+      assert.isNotOk(circle.covers(point));
+    });
+    it("gives false if the given point is outside the circumference of the circle and of same instance", function() {
+      const center = { x: 0, y: 0 };
+      const point = new Point(0, 8);
+      const circle = new Circle(center, 7);
+      assert.isNotOk(circle.covers(point));
+    });
   });
 });

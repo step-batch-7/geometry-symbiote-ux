@@ -19,6 +19,30 @@ describe("Rectangle", function() {
       const rectangle = new Rectangle(endA, endC);
       assert.strictEqual(rectangle.area, 20);
     });
+    it("gives the area when the rectangle is parallel to x and y axis", function() {
+      const endA = { x: 0, y: 0 };
+      const endC = { x: 5, y: 4 };
+      const rectangle = new Rectangle(endA, endC);
+      assert.deepStrictEqual(rectangle.area, 20);
+    });
+    it("gives the 0 when the rectangle is parallel to x and y axis and doesn't have length", function() {
+      const endA = { x: 0, y: 0 };
+      const endC = { x: 5, y: 0 };
+      const rectangle = new Rectangle(endA, endC);
+      assert.deepStrictEqual(rectangle.area, 0);
+    });
+    it("gives the 0 when the rectangle is parallel to x and y axis and doesn't have width", function() {
+      const endA = { x: 0, y: 0 };
+      const endC = { x: 0, y: 4 };
+      const rectangle = new Rectangle(endA, endC);
+      assert.deepStrictEqual(rectangle.area, 0);
+    });
+    it("gives area when  coordinates are negative", function() {
+      const endA = { x: 2, y: 3 };
+      const endC = { x: -3, y: -5 };
+      const rectangle = new Rectangle(endA, endC);
+      assert.deepStrictEqual(rectangle.area, 40);
+    });
   });
 
   describe("perimeter", function() {
@@ -27,6 +51,30 @@ describe("Rectangle", function() {
       const endC = { x: 6, y: 1 };
       const rectangle = new Rectangle(endA, endC);
       assert.strictEqual(rectangle.perimeter, 18);
+    });
+    it("gives the perimeter when the rectangle is parallel to x and y axis", function() {
+      const endA = { x: 0, y: 0 };
+      const endC = { x: 5, y: 4 };
+      const rectangle = new Rectangle(endA, endC);
+      assert.deepStrictEqual(rectangle.perimeter, 18);
+    });
+    it("gives the 0 when the rectangle is parallel to x and y axis and doesn't have length", function() {
+      const endA = { x: 0, y: 0 };
+      const endC = { x: 5, y: 0 };
+      const rectangle = new Rectangle(endA, endC);
+      assert.deepStrictEqual(rectangle.perimeter, 10);
+    });
+    it("gives the 0 when the rectangle is parallel to x and y axis and doesn't have breadth", function() {
+      const endA = { x: 0, y: 0 };
+      const endC = { x: 0, y: 4 };
+      const rectangle = new Rectangle(endA, endC);
+      assert.deepStrictEqual(rectangle.perimeter, 8);
+    });
+    it("gives perimeter when  coordinates are negative", function() {
+      const endA = { x: 2, y: 3 };
+      const endC = { x: -3, y: -5 };
+      const rectangle = new Rectangle(endA, endC);
+      assert.deepStrictEqual(rectangle.perimeter, 26);
     });
   });
 
@@ -51,6 +99,15 @@ describe("Rectangle", function() {
       const rectangle1 = new Rectangle(endA, endC);
       const rectangle2 = new Rectangle({ x: 2, y: 5 }, endC);
       assert.isNotOk(rectangle1.isEqualTo(rectangle2));
+    });
+    it("should invalidate when one is an empty object ", function() {
+      const rectangle1 = new Rectangle({ x: 10, y: 11 }, { x: 12, y: 13 });
+      const rectangle2 = {};
+      assert.isFalse(rectangle1.isEqualTo(rectangle2));
+    });
+    it("should validate when the reference of both the lines are same", function() {
+      const rectangle = new Rectangle({ x: 10, y: 11 }, { x: 12, y: 13 });
+      assert.isTrue(rectangle.isEqualTo(rectangle));
     });
   });
 

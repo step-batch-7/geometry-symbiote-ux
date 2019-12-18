@@ -1,4 +1,4 @@
-const { Point } = require("./point");
+const Point = require("./point");
 
 const areColinear = function(point1, point2, point3) {
   const [x1, y1] = [point1.x, point1.y];
@@ -7,11 +7,11 @@ const areColinear = function(point1, point2, point3) {
   return x1 * (y2 - y3) + x2 * (y3 - y1) + x3 * (y1 - y2) === 0;
 };
 
-const isPointInRange = function(midPoint, point1, point2) {
+const isPointInRange = function(point, point1, point2) {
   if (point1 > point2) {
-    return point2 <= midPoint && midPoint <= point1;
+    return point2 <= point && point <= point1;
   }
-  return point2 >= midPoint && midPoint >= point1;
+  return point2 >= point && point >= point1;
 };
 
 class Line {
@@ -82,4 +82,4 @@ class Line {
   }
 }
 
-module.exports = { Line };
+module.exports = Line;

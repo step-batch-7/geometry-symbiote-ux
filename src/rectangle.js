@@ -1,12 +1,13 @@
-const { Point } = require("./point");
-const { Line } = require("./line");
+const Point = require("./point");
+const Line = require("./line");
 
-const isInRange = function(midPoint, point1, point2) {
+const isInRange = function(givenPoint, point1, point2) {
   if (point1 > point2) {
-    return point2 <= midPoint && midPoint <= point1;
+    [point1, point2] = [point2, point1];
   }
-  return point2 >= midPoint && midPoint >= point1;
+  return point2 >= givenPoint && givenPoint >= point1;
 };
+
 const sides = function(start, end) {
   const side1 = new Line({ x: start.x, y: start.y }, { x: end.x, y: start.y });
   const side2 = new Line({ x: end.x, y: start.y }, { x: end.x, y: end.y });
@@ -60,4 +61,4 @@ class Rectangle {
   }
 }
 
-module.exports = { Rectangle };
+module.exports = Rectangle;

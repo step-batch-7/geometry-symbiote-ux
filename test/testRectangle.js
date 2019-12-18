@@ -1,6 +1,6 @@
 const assert = require("chai").assert;
-const { Rectangle } = require("../src/rectangle");
-const { Point } = require("../src/point");
+const Rectangle = require("../src/rectangle");
+const Point = require("../src/point");
 
 describe("Rectangle", function() {
   describe("toString", function() {

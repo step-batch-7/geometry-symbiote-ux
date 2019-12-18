@@ -1,6 +1,6 @@
 const assert = require("chai").assert;
-const { Circle } = require("../src/circle");
-const { Point } = require("../src/point");
+const Circle = require("../src/circle");
+const Point = require("../src/point");
 
 describe("Circle", function() {
   describe("toString", function() {
@@ -11,24 +11,24 @@ describe("Circle", function() {
     });
   });
 
-  describe("isEqual", function() {
+  describe("isEqualTo", function() {
     it("gives true if the both circles are at same location and are of same size and instance", function() {
       const center = { x: 2, y: 2 };
       const circle1 = new Circle(center, 5);
       const circle2 = new Circle(center, 5);
-      assert.ok(circle1.isEqual(circle2));
+      assert.ok(circle1.isEqualTo(circle2));
     });
     it("gives false if the both circles are at same location but  are not of same size and instance", function() {
       const center = { x: 2, y: 2 };
       const circle1 = new Circle(center, 4);
       const circle2 = new Circle(center, 5);
-      assert.isNotOk(circle1.isEqual(circle2));
+      assert.isNotOk(circle1.isEqualTo(circle2));
     });
     it("gives false if the both circles are at same location and are of same size but not of same instance", function() {
       const center = { x: 2, y: 2 };
       const circle1 = new Circle(center, 5);
       const circle2 = { center: { x: 2, y: 2 }, radius: 5 };
-      assert.isNotOk(circle1.isEqual(circle2));
+      assert.isNotOk(circle1.isEqualTo(circle2));
     });
   });
 

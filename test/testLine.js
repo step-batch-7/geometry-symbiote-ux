@@ -1,50 +1,48 @@
 const assert = require("chai").assert;
-const { Line } = require("../src/line");
-const { Point } = require("../src/point");
+const Line = require("../src/line");
+const Point = require("../src/point");
 
 describe("Line", function() {
   describe("toString", function() {
-    it("Should give string form of the given line", function() {
+    it("gives string representation form of the given line", function() {
       const endA = { x: 1, y: 2 };
       const endB = { x: 3, y: 4 };
       const line = new Line(endA, endB);
-      const actualValue = line.toString();
-      assert.strictEqual(actualValue, `[Line (1,2) to (3,4)]`);
+      assert.strictEqual(line.toString(), `[Line (1,2) to (3,4)]`);
     });
   });
 
   describe("isEqualTo", function() {
-    it("Should give true if fields of both lines are equal and instance of the line", function() {
+    it("gives true if fields of both lines are equal and instance of the line", function() {
       const endA = { x: 1, y: 2 };
       const endB = { x: 3, y: 4 };
       const line = new Line(endA, endB);
       const other = new Line(endA, endB);
       assert.ok(line.isEqualTo(other));
     });
-    it("Should give false if fields of both lines are  equal but not instance of line", function() {
+    it("gives false if fields of both lines are  equal but not instance of line", function() {
       const endA = { x: 1, y: 2 };
       const endB = { x: 3, y: 4 };
       const line = new Line(endA, endB);
       const other = { endA: { x: 1, y: 2 }, endB: { x: 3, y: 4 } };
-      const actualValue = line.isEqualTo(other);
-      assert.isNotOk(actualValue);
+      assert.isNotOk(line.isEqualTo(other));
     });
   });
 
   describe("length", function() {
-    it("Should give length of the given line, which has the positive endA and endB coordinates", function() {
+    it("gives length of the given line, which has the positive endA and endB coordinates", function() {
       const endA = { x: 5, y: 4 };
       const endB = { x: 1, y: 4 };
       const line = new Line(endA, endB);
       assert.strictEqual(line.length, 4);
     });
-    it("Should give length of the given line, which has the floating endA and endB coordinates", function() {
+    it("gives length of the given line, which has the floating endA and endB coordinates", function() {
       const endA = { x: 4, y: 4 };
       const endB = { x: 1, y: 1 };
       const line = new Line(endA, endB);
       assert.approximately(line.length, 4, 0.5);
     });
-    it("Should give length of the given line, which has the negative endA and endB coordinates", function() {
+    it("gives length of the given line, which has the negative endA and endB coordinates", function() {
       const endA = { x: -1, y: -2 };
       const endB = { x: 2, y: 2 };
       const line = new Line(endA, endB);
@@ -53,21 +51,21 @@ describe("Line", function() {
   });
 
   describe("isParallel", function() {
-    it("give false if two lines are collinear", function() {
+    it("gives false if two lines are collinear", function() {
       const endA = { x: 5, y: 5 };
       const endB = { x: 25, y: 45 };
       const line = new Line(endA, endB);
       const line2 = new Line(endA, endB);
       assert.isNotOk(line.isParallelTo(line2));
     });
-    it("give false if two lines are parallel but not of same instance", function() {
+    it("gives false if two lines are parallel but not of same instance", function() {
       const endA = { x: 5, y: 5 };
       const endB = { x: 25, y: 45 };
       const line = new Line(endA, endB);
       const line2 = { endA: { x: 5, y: 5 }, endB: { x: 25, y: 45 } };
       assert.isNotOk(line.isParallelTo(line2));
     });
-    it("give false if two lines are not parallel", function() {
+    it("gives false if two lines are not parallel", function() {
       const endA = { x: 5, y: 5 };
       const endB = { x: 25, y: 45 };
       const line = new Line(endA, endB);
@@ -157,9 +155,8 @@ describe("Line", function() {
       const endB = { x: 4, y: 0 };
       const midPoint = { x: 2, y: 2 };
       const line = new Line(endA, endB);
-      const actual = line.split();
       const expected = [new Line(endA, midPoint), new Line(midPoint, endB)];
-      assert.deepStrictEqual(actual, expected);
+      assert.deepStrictEqual(line.split(), expected);
     });
   });
 
@@ -192,22 +189,19 @@ describe("Line", function() {
       const endA = { x: 0, y: 0 };
       const endB = { x: 6, y: 8 };
       const line = new Line(endA, endB);
-      const expected = new Point(3, 4);
-      assert.deepStrictEqual(line.findPointFromStart(5), expected);
+      assert.deepStrictEqual(line.findPointFromStart(5), new Point(3, 4));
     });
     it("gives the starting point of the line , if the distance is zero ", function() {
       const endA = { x: 0, y: 0 };
       const endB = { x: 6, y: 8 };
       const line = new Line(endA, endB);
-      const expected = new Point(0, 0);
-      assert.deepStrictEqual(line.findPointFromStart(0), expected);
+      assert.deepStrictEqual(line.findPointFromStart(0), new Point(0, 0));
     });
     it("gives the last point of the line , if the distance is equal to the length of line", function() {
       const endA = { x: 0, y: 0 };
       const endB = { x: 9, y: 12 };
       const line = new Line(endA, endB);
-      const expected = new Point(9, 12);
-      assert.deepStrictEqual(line.findPointFromStart(15), expected);
+      assert.deepStrictEqual(line.findPointFromStart(15), new Point(9, 12));
     });
     it("gives the null , if given distance of the point is more then the length of the line", function() {
       const endA = { x: 0, y: 0 };
@@ -222,22 +216,19 @@ describe("Line", function() {
       const endA = { x: 0, y: 0 };
       const endB = { x: 6, y: 8 };
       const line = new Line(endA, endB);
-      const expected = new Point(3, 4);
-      assert.deepStrictEqual(line.findPointFromEnd(5), expected);
+      assert.deepStrictEqual(line.findPointFromEnd(5), new Point(3, 4));
     });
     it("gives the last point of the line , if the distance is zero ", function() {
       const endA = { x: 0, y: 0 };
       const endB = { x: 6, y: 8 };
       const line = new Line(endA, endB);
-      const expected = new Point(6, 8);
-      assert.deepStrictEqual(line.findPointFromEnd(0), expected);
+      assert.deepStrictEqual(line.findPointFromEnd(0), new Point(6, 8));
     });
     it("gives the starting point of the line , if the distance is equal to the length of line", function() {
       const endA = { x: 0, y: 0 };
       const endB = { x: 9, y: 12 };
       const line = new Line(endA, endB);
-      const expected = new Point(0, 0);
-      assert.deepStrictEqual(line.findPointFromEnd(15), expected);
+      assert.deepStrictEqual(line.findPointFromEnd(15), new Point(0, 0));
     });
     it("gives the null , if given distance of the point is more then the length of the line", function() {
       const endA = { x: 0, y: 0 };
